@@ -33,7 +33,7 @@ class ErrorCollectingOptionParser(OptionParser):
 
     def parse_args(self, argv):
         options, args = OptionParser.parse_args(self, argv)
-        for k,v in options.__dict__.iteritems():
+        for k,v in options.__dict__.items():
             if k in self._custom_names:
                 options.__dict__[self._custom_names[k]] = v
                 del options.__dict__[k]
@@ -42,7 +42,7 @@ class ErrorCollectingOptionParser(OptionParser):
     def error(self, msg):
         self._errors.append(msg)
 
-optypes=[int,long,float,complex] # not type='choice' choices='a|b'
+optypes=[int,float,complex] # not type='choice' choices='a|b'
 def optype(t):
     if t is bool:
         return None
